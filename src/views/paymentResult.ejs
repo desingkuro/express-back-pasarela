@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado del Pago</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .error {
+            color: #e74c3c;
+            padding: 15px;
+            background-color: #fdecea;
+            border: 1px solid #f5c6cb;
+            border-radius: 4px;
+        }
+        .success {
+            color: #27ae60;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <% if (!isValidSignature) { %>
+            <div class="error">
+                <h1>Error validando la firma digital.</h1>
+                <p>La transacción no puede ser verificada. Por favor contacta al soporte.</p>
+            </div>
+        <% } else { %>
+            <h1>Resumen de la transacción</h1>
+            <div class="success">
+                <h2><%= transactionData.state %></h2>
+            </div>
+            
+            <h2>Detalles del pago</h2>
+            <table>
+                <tr>
+                    <th>Campo</th>
+                    <th>Valor</th>
+                </tr>
+                <tr>
+                    <td>Estado de la transacción</td>
+                    <td><%= transactionData.state %></td>
+                </tr>
+                <tr>
+                    <td>ID de la transacción</td>
+                    <td><%= transactionData.transactionId %></td>
+                </tr>
+                <tr>
+                    <td>Referencia de venta</td>
+                    <td><%= transactionData.reference_pol %></td>
+                </tr>
+                <tr>
+                    <td>Referencia de la transacción</td>
+                    <td><%= transactionData.referenceCode %></td>
+                </tr>
+                
+                <% if (hasBankInfo) { %>
+                    <tr>
+                        <td>CUS (Código Único de Seguimiento)</td>
+                        <td><%= transactionData.cus %></td>
+                    </tr>
+                    <tr>
+                        <td>Banco</td>
+                        <td><%= transactionData.pseBank %></td>
+                    </tr>
+                <% } %>
+                
+                <tr>
+                    <td>Valor total</td>
+                    <td>$<%= new Intl.NumberFormat('es-CO').format(transactionData.value) %></td>
+                </tr>
+                <tr>
+                    <td>Moneda</td>
+                    <td><%= transactionData.currency %></td>
+                </tr>
+                <tr>
+                    <td>Descripción</td>
+                    <td><%= transactionData.description %></td>
+                </tr>
+                <tr>
+                    <td>Método de pago</td>
+                    <td><%= transactionData.paymentMethod %></td>
+                </tr>
+            </table>
+            
+            <div style="margin-top: 30px;">
+                <a href="/" style="padding: 10px 15px; background-color: #3498db; color: white; text-decoration: none; border-radius: 4px;">
+                    Volver al inicio
+                </a>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>

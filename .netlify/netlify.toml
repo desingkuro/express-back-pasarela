@@ -1,0 +1,42 @@
+redirectsOrigin = "config"
+plugins = []
+functionsDirectory = "/home/kuro/Documentos/serviConecte/pasarela de pagos/backExpress/functions"
+functionsDirectoryOrigin = "config-v1"
+headers = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "/home/kuro/Documentos/serviConecte/pasarela de pagos/backExpress"
+publishOrigin = "default"
+commandOrigin = "config"
+command = "tsc"
+functions = "/home/kuro/Documentos/serviConecte/pasarela de pagos/backExpress/functions"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
+
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/api"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
