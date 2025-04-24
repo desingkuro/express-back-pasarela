@@ -1,8 +1,8 @@
 // functions/api.js
-import serverless from "serverless-http";
-import express from "express";
-import cors from "cors";
-import server from "../build/config/api/Server";
+const serverless = require("serverless-http");
+const express = require("express");
+const cors = require("cors");
+const server = require("../build/config/api/Server").default;
 
 // App Express
 const app = express();
