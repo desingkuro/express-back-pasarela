@@ -26,7 +26,7 @@ class Server {
             ENDPOINT: process.env.PAYU_ENDPOINT || "https://sandbox.api.payulatam.com",
             BASE_URL: process.env.BASE_URL || "http://localhost:3000",
         };
-        this.app.use("/payu/", RoutePayu_1.default);
+        this.app.use("/api/payu", RoutePayu_1.default);
     }
     start() {
         this.app.listen(this.app.get("PORT"), () => {

@@ -1,7 +1,7 @@
-redirectsOrigin = "config"
-plugins = []
 functionsDirectory = "/home/kuro/Documentos/serviConecte/pasarela de pagos/backExpress/functions"
 functionsDirectoryOrigin = "config-v1"
+redirectsOrigin = "config"
+plugins = []
 headers = []
 
 [functions]

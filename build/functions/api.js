@@ -2,6 +2,7 @@
 import serverless from "serverless-http";
 import express from "express";
 import cors from "cors";
+import server from "../build/config/api/Server";
 
 // App Express
 const app = express();
@@ -14,11 +15,8 @@ app.use(cors({
 
 app.use(express.json());
 
-// Importar desde DIST
-const routePayu = require("../dist/config/api/Server").default;
-
 // Rutas
-app.use("/api/payu", routePayu);
+app.use("/api/payu", server);
 
 // Exportar para Netlify
 module.exports.handler = serverless(app);

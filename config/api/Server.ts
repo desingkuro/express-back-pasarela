@@ -26,7 +26,7 @@ class Server {
       BASE_URL: process.env.BASE_URL || "http://localhost:3000",
     };
 
-    this.app.use("/payu/", routePayu);
+    this.app.use("/api/payu", routePayu);
   }
   start() {
     this.app.listen(this.app.get("PORT"), () => {
