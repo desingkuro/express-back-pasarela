@@ -16,7 +16,8 @@ app.use(cors({
 app.use(express.json());
 
 // Rutas
-app.use("/api/payu", server);
+const serverInstance = new server();
+app.use("/api/payu", serverInstance);
 
 // Exportar para Netlify
 module.exports.handler = serverless(app);
