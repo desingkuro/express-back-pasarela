@@ -5,7 +5,8 @@ import cors from "cors";
 import server from "../config/api/Server";
 
 // App Express
-const app = express();
+const serverInstance = new server();
+const app = serverInstance.app;
 
 app.use(cors({
   origin: "https://thriving-cocada-69cfdc.netlify.app",
@@ -14,10 +15,6 @@ app.use(cors({
 }));
 
 app.use(express.json());
-
-// Rutas
-const serverInstance = new server();
-app.use("/api/payu", serverInstance);
 
 // Exportar para Netlify
 module.exports.handler = serverless(app);
